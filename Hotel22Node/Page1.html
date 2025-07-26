@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Website</title>
+    <link rel="stylesheet" href="Page1.css">
+</head>
+<body>
+<div class="main">
+     <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">Bulgaria Hotels</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="Page2.html" id="page22">ROOMS</a></li>
+                    <li><a href="Page3.html" >ABOUT</a></li>
+                    <li><a href="p4.html">CONTACT</a></li>
+                </ul>
+            </div>
+            
+            
+    </div>
+    <div class="content">
+        <h1>Bulgar Hotel Company</h1>
+        <p class="par">WELCOME TO OUR LUXURIOUS HOTELS!<br>HERE YOU WILL EXPERIENCE TRUE COMFORT!<br>WE OFFER BEUTIFUL ROOMS<br>DELICIOUS FOOD<br>LOTS OF FUN<br>MAKE SURE YOU LOG IN TO RESERVE A ROOM </p>
+        
+    </div>
+    <form method="post" action="save_user.php">
+        <div class="form" >
+            <h2>LOG IN FORM</h2>
+            <input type="text" class="email" name="username" placeholder="Enter Email here..." id="tb1">
+            <input type="text" class="password" name="password" placeholder="Enter Password here..." id="tb2"><br>
+            <button class="log" onclick="Enter()" type="submit" id="tb11">LOG IN</button>
+            <p class="para">Dont have an account?  <a class="hhh" href="#">Sign In</a></p>
+        </div>
+    </form>
+    </div>
+</div>
+<script src="LoginBtn.js">
+     document.getElementById('registerForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {
+        username: formData.get('username'),
+        password: formData.get('password')
+      };
+
+      const response = await fetch('/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    });
+</script>
+</body>
+</html>
